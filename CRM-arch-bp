@@ -1,0 +1,94 @@
+" =========================
+" Honey’s CRM Architecture Blueprint
+" =========================
+
+" Root folder
+crm/
+├─ app.py                " Entry point: initializes app, loads config, registers routes
+
+" Configuration & environment
+├─ config/
+│   ├─ __init__.py       " Loads config objects (dev, prod, testing)
+│   ├─ settings.py       " Constants, secret keys, DB URLs
+
+" Database models (SQLAlchemy ORM)
+├─ models/
+│   ├─ __init__.py       " Base models and DB initialization
+│   ├─ user.py           " User model (auth, roles)
+│   ├─ contact.py        " Contact model (CRM entity)
+│   ├─ project.py        " Projects/tasks
+│   └─ note.py           " Notes or activity logs
+
+" API endpoints / views
+├─ routes/
+│   ├─ __init__.py       " Registers blueprints
+│   ├─ auth.py           " Login/logout/register routes
+│   ├─ contacts.py       " CRUD for contacts
+│   ├─ projects.py       " CRUD for projects/tasks
+│   └─ notes.py          " CRUD for notes or logs
+
+" Business logic & abstractions
+├─ services/
+│   ├─ __init__.py
+│   ├─ auth_service.py   " Login validation, password hashing
+│   ├─ contact_service.py
+│   ├─ project_service.py
+│   └─ note_service.py
+
+" Helpers & utilities
+├─ utils/
+│   ├─ __init__.py
+│   ├─ validators.py     " Input validation functions
+│   ├─ helpers.py        " Generic helpers (date formatting, etc.)
+│   └─ logger.py         " Logging configuration
+
+" Unit tests
+├─ tests/
+│   ├─ __init__.py
+│   ├─ test_auth.py
+│   ├─ test_contacts.py
+│   ├─ test_projects.py
+│   └─ test_notes.py
+
+" Frontend templates
+├─ templates/
+│   ├─ base.html
+│   ├─ login.html
+│   ├─ dashboard.html
+│   └─ contact_list.html
+
+" Static assets
+├─ static/
+│   ├─ css/
+│   ├─ js/
+│   └─ images/
+
+" Project dependencies & setup
+├─ requirements.txt      " Dependencies
+├─ README.md             " Project overview, setup, usage
+└─ .env                  " Environment variables (DB URL, secret keys)
+
+" =========================
+" Blueprint Notes & Philosophy
+" =========================
+
+" Separation of Concerns:
+"   - Models -> database definitions
+"   - Routes -> API endpoints / HTTP handling
+"   - Services -> business logic (CRUD, auth, rules)
+"   - Utils -> helpers and general-purpose code
+
+" Scalability:
+"   - Adding new entity: model + service + route
+"   - Testing structured per module
+"   - Easy to expand templates & static files
+
+" Future-proofing:
+"   - Config folder allows dev/prod/testing environments
+"   - Logger ensures consistent logging
+"   - Templates & static allow gradual frontend enhancements
+
+" Testing-first Friendly:
+"   - Tests mirror app structure
+"   - Easy unit testing per module
+
