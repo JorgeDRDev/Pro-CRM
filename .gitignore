@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment files
+.env
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.zip
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+
+# Miscellaneous
+CRM-arch-bp
+Developer-Roadmap-Checklist
